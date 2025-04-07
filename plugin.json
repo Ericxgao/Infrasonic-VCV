@@ -1,6 +1,6 @@
 {
-  "slug": "PhaseOscillator",
-  "name": "Phase Oscillator",
+  "slug": "InfrasonicAudio",
+  "name": "Infrasonic Audio",
   "version": "2.0.0",
   "license": "GPL-3.0-or-later",
   "brand": "Infrasonic Audio",
@@ -14,8 +14,8 @@
   "changelogUrl": "https://github.com/infrasonicaudio/Infrasonic-VCV/releases",
   "modules": [
     {
-      "slug": "PhaseOscillator",
-      "name": "Phase Oscillator",
+      "slug": "WarpCore",
+      "name": "Warp Core",
       "description": "Dual-algorithm phase distortion and phase modulation oscillator",
       "tags": [
         "Oscillator",

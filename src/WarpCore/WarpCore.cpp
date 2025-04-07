@@ -462,8 +462,5 @@ struct WarpCoreWidget : ModuleWidget {
 	}
 };
 
-#ifndef METAMODULE
+
 Model* modelWarpCore = createModel<WarpCore, WarpCoreWidget>("WarpCore");
-#else
-Model* modelWarpCore = createModel<WarpCore, WarpCoreWidget>("PhaseOscillator");
-#endif	
