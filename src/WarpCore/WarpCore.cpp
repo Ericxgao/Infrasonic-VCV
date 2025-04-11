@@ -386,8 +386,12 @@ struct WarpCoreWidget : ModuleWidget {
 		addParam(createParamCentered<infrasonic::Switch2>(mm2px(Vec(23.499, 86.688)), module, WarpCore::ROUTING_PARAM));
 		addParam(createParamCentered<infrasonic::Switch3>(mm2px(Vec(37.461, 86.688)), module, WarpCore::WINDOW_PARAM));
 
+		#ifndef METAMODULE
 		auto *ratioParam = createParamCentered<Rogan2PSGreen>(mm2px(Vec(48.465, 22.829)), module, WarpCore::PM_RATIO_PARAM);
 		ratioParam->hide();
+		#else
+		auto *ratioParam = createParamCentered<Rogan2PSGreen>(mm2px(Vec(30.491, 22.829)), module, WarpCore::PM_RATIO_PARAM);
+		#endif
 		addParam(ratioParam);
 
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(8.454, 95.1)), module, WarpCore::PD1_CV_INPUT));
@@ -404,6 +408,9 @@ struct WarpCoreWidget : ModuleWidget {
 		addChild(createLightCentered<MediumLight<BlueRedLight>>(mm2px(Vec(30.48, 52.295)), module, WarpCore::ALGO_LIGHT + 1 * 2));
 		addChild(createLightCentered<MediumLight<BlueRedLight>>(mm2px(Vec(30.48, 57.31)), module, WarpCore::ALGO_LIGHT + 2 * 2));
 		addChild(createLightCentered<MediumLight<BlueRedLight>>(mm2px(Vec(30.48, 62.334)), module, WarpCore::ALGO_LIGHT + 3 * 2));
+	
+		getParam(WarpCore::INT_PM_PARAM)->show();
+		getParam(WarpCore::PM_RATIO_PARAM)->show();
 	}
 
 	void appendContextMenu(Menu* menu) override {
@@ -451,6 +458,7 @@ struct WarpCoreWidget : ModuleWidget {
 
 	void setRatioMode(bool enabled) {
 		WarpCore* module = dynamic_cast<WarpCore*>(this->module);
+		#ifndef METAMODULE
 		if (enabled) {
 			getParam(WarpCore::INT_PM_PARAM)->hide();
 			getParam(WarpCore::PM_RATIO_PARAM)->show();
@@ -458,6 +466,7 @@ struct WarpCoreWidget : ModuleWidget {
 			getParam(WarpCore::INT_PM_PARAM)->show();
 			getParam(WarpCore::PM_RATIO_PARAM)->hide();
 		}
+		#endif
 		module->ratioMode = enabled;;
 	}
 };

@@ -1,8 +1,17 @@
 #include "plugin.hpp"
 
+#if defined(METAMODULE_BUILTIN)
+extern Plugin* pluginInstance;
+#else
 Plugin* pluginInstance;
+#endif
 
-void init(Plugin* p) {
+#if defined(METAMODULE_BUILTIN)
+void init_InfrasonicAudio(Plugin* p)
+#else
+void init(Plugin* p)
+#endif
+{
 	pluginInstance = p;
 
 	// Add modules here
